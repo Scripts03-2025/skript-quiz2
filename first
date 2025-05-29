@@ -1,0 +1,56 @@
+<script>
+(function() {
+  // Создаем контейнер
+  const container = document.createElement('div');
+  container.style.position = 'fixed';
+  container.style.bottom = '20px';
+  container.style.right = '20px';
+  container.style.zIndex = '9999';
+  container.style.display = 'flex';
+  container.style.flexDirection = 'column';
+  container.style.gap = '10px';
+
+  // Данные по мессенджерам
+  const messengers = [
+    {
+      href: 'https://t.me/anastasia_dubai_real_estate',
+      title: 'Написать в Telegram',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg'
+    },
+    {
+      href: 'https://wa.me/79935951614',
+      title: 'Написать в WhatsApp',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg'
+    }
+  ];
+
+  // Создаем иконки
+  messengers.forEach(({ href, title, img }) => {
+    const a = document.createElement('a');
+    a.href = href;
+    a.target = '_blank';
+    a.title = title;
+    a.style.width = '50px';
+    a.style.height = '50px';
+    a.style.borderRadius = '50%';
+    a.style.overflow = 'hidden';
+    a.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+    a.style.transition = 'transform 0.2s';
+    a.onmouseenter = () => a.style.transform = 'scale(1.1)';
+    a.onmouseleave = () => a.style.transform = 'scale(1)';
+
+    const imgEl = document.createElement('img');
+    imgEl.src = img;
+    imgEl.alt = title;
+    imgEl.style.width = '100%';
+    imgEl.style.height = '100%';
+    imgEl.style.objectFit = 'cover';
+
+    a.appendChild(imgEl);
+    container.appendChild(a);
+  });
+
+  // Добавляем на страницу
+  document.body.appendChild(container);
+})();
+</script>
